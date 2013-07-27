@@ -11,12 +11,6 @@ Django Sitemap Extras
 Django Sitemap Extras is a rethink of the builtin django.contrib.sitemaps module which focuses on better performance, more flexibliity and support for a larger variety of formats.
 
 
-Features
---------
-
-- Support for BCE dates
-- Fuzzy parsing logic that can handle inputs like: ``Sun, 14 Jun 1998``, ``January 1 2000``, ``1.1.4004 BCE``, as well as any of the `normal Django input formats <https://docs.djangoproject.com/en/dev/ref/settings/#date-input-formats>`_.
-
 Install
 -------
 
