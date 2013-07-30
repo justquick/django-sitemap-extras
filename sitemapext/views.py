@@ -13,7 +13,7 @@ except ImportError:
     except ImportError:
         raise ImportError('You must have either Django>=1.3 or django-cbv>=0.2 installed.')
 
-from .builder import Sitemap, Index, NewsSitemap, VideoSitemap, ImageSitemap
+from .builder import Sitemap, Index, NewsSitemap, VideoSitemap, ImageSitemap, MobileSitemap
 from .utils import get_client_ip, is_googlebot
 
 
@@ -78,6 +78,10 @@ class VideoSitemapView(SitemapView):
 
 class ImageSitemapView(SitemapView):
     builder_class = ImageSitemap
+
+
+class MobileSitemapView(SitemapView):
+    builder_class = MobileSitemap
 
 
 class SitemapIndex(CacheMixin, View):

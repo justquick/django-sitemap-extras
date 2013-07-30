@@ -1,3 +1,9 @@
+try:
+    from .views import (SitemapGenerator, SitemapIndex, SitemapView, VideoSitemapView, ImageSitemapView,
+                        NewsSitemapView, MobileSitemapView, GoogleBotVerifierMixin)
+except ImportError:
+    pass
+
 __version_info__ = {
     'major': 0,
     'minor': 1,

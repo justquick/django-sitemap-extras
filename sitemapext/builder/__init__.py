@@ -3,3 +3,4 @@ from .news import NewsSitemap
 from .simple import Sitemap
 from .video import VideoSitemap
 from .image import ImageSitemap
+from .mobile import MobileSitemap

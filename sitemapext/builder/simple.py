@@ -1,7 +1,7 @@
 from lxml import etree
 
-from .base import Abstract, assert_
 from ..settings import OPTIONAL_ATTRS
+from .base import Abstract, assert_
 
 
 class Sitemap(Abstract):

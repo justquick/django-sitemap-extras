@@ -16,7 +16,7 @@ except ImportError:
 
 from django.contrib.sitemaps import GenericSitemap
 
-from .views import SitemapView, SitemapGenerator, SitemapIndex, NewsSitemapView, VideoSitemapView, ImageSitemapView
+from .views import SitemapView, SitemapGenerator, SitemapIndex, NewsSitemapView, VideoSitemapView, ImageSitemapView, MobileSitemapView
 
 
 class SettingDoesNotExist:
@@ -209,6 +209,10 @@ class ModelImageSitemapView(ImageSitemapView):
         ]
 
 
+class ModelMobileSitemapView(MobileSitemapView):
+    model = Model
+
+
 info_dict = {
     'queryset': Model.objects.all(),
     'date_field': 'lastmod_date',
@@ -224,6 +228,7 @@ sitemaps = {
     'news': ModelNewsSitemapView,
     'video': ModelVideoSitemapView,
     'image': ModelImageSitemapView,
+    'mobile': ModelMobileSitemapView,
     'invalid-simple': InvalidSitemapView,
     'invalid-news': InvalidNewsSitemapView,
     'invalid-video': InvalidVideoSitemapView,
@@ -363,6 +368,13 @@ class ImageSitemapTest(SitemapTestCase):
     ]
 
 
+class MobileSitemapTest(SitemapTestCase):
+    url = '/sitemap-mobile.xml'
+    contains = SitemapTestCase.contains + [
+        '<mobile:mobile/>'
+    ]
+
+
 class InvalidSitemapTestCase(SitemapTestCase):
     url = '/sitemap-invalid-simple.xml'
     conf = {'DEBUG': True, 'PRETTY': False}
@@ -428,4 +440,4 @@ if 'django.contrib.sitemaps' in settings.INSTALLED_APPS:
             self.test_sitemap()
             ext_time = time() - ti
             decrease = ((django_time - ext_time) / django_time) * 100
-            self.assert_(decrease > 50, 'Speedup over contrib.sitemaps was %.2f%%' % decrease)
+            self.assert_(decrease > 45, 'Speedup over contrib.sitemaps was %.2f%%' % decrease)
