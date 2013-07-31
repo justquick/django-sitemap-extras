@@ -69,6 +69,7 @@ class SitemapView(CacheMixin, ListView):
 
 
 class NewsSitemapView(SitemapView):
+    paginate_by = 1000
     builder_class = NewsSitemap
 
 
