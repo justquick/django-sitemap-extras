@@ -98,7 +98,7 @@ class SitemapIndex(CacheMixin, View):
                 for page in range(2, paginator.num_pages + 1):
                     yield '%s?page=%s' % (url, page)
         self.builder = self.builder_class(self, generate())
-        return HttpResponse(self.builder.render())
+        return HttpResponse(self.builder.render(), content_type='application/xml')
 
 
 class SitemapGenerator(CacheMixin, View):
